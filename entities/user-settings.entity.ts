@@ -30,6 +30,6 @@ export default class UserSettings extends BaseEntity {
     @Column('boolean', { default: true, nullable: false })
     notificationFaceitEnabled: boolean
 
-    @OneToOne(type => User, user => user.settings)
+    @OneToOne(() => User, user => user.settings)
     userId: User
 }
