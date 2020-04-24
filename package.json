@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "test": "npm run db:migrate",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:migrate": "npm run typeorm migration:run",
     "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations"
@@ -20,6 +21,9 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/node": "^13.13.2",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
     "rimraf": "^3.0.2",
     "ts-node": "^8.9.0",
     "tsconfig-paths": "^3.9.0",
