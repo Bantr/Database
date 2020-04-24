@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run db:migrate",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:migrate": "npm run typeorm migration:run",
     "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations"
