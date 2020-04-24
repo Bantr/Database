@@ -1,5 +1,5 @@
 {
-  "name": "bantr-database",
+  "name": "@bantr/database",
   "version": "1.0.0",
   "description": "Database declarations for Bantr",
   "main": "index.js",
