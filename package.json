@@ -1,0 +1,28 @@
+{
+  "name": "bantr-database",
+  "version": "1.0.0",
+  "description": "Database declarations for Bantr",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "db:migrate": "npm run typeorm migration:run",
+    "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations"
+  },
+  "author": "Catalysm",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pg": "^8.0.3",
+    "typeorm": "^0.2.24"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^13.13.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.9.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.8.3"
+  }
+}
