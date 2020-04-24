@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm';
 import TrackedAccount from './trackedAccount.entity';
 import { BanType } from '../types/BanType.enum';
-import { BanPlatform } from '../types/BanPlatform.enum';
 
 /**
  * Database representation of a ban
@@ -42,6 +41,6 @@ export default class Ban extends BaseEntity {
     /**
      * Link bans to trackedAccount
      */
-    @ManyToOne(type => TrackedAccount, trackedAccount => trackedAccount.bans)
+    @ManyToOne(() => TrackedAccount, trackedAccount => trackedAccount.bans)
     trackedAccount: TrackedAccount;
 }

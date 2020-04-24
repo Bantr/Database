@@ -22,10 +22,10 @@ export default class Notification extends BaseEntity {
     @Column('boolean', { default: false })
     deleted: boolean;
 
-    @ManyToMany(type => Ban)
+    @ManyToMany(() => Ban)
     @JoinTable()
     bans: Ban[];
 
-    @ManyToOne(type => User, user => user.notifications)
+    @ManyToOne(() => User, user => user.notifications)
     user: User;
 }

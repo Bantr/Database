@@ -51,23 +51,23 @@ export default class User extends BaseEntity {
     /**
      * User tracks these accounts
      */
-    @ManyToMany(type => TrackedAccount, trackedAccount => trackedAccount.trackedBy)
+    @ManyToMany(() => TrackedAccount, trackedAccount => trackedAccount.trackedBy)
     tracks: TrackedAccount[];
 
-    @OneToOne(type => UserSettings, { cascade: true, eager: true })
+    @OneToOne(() => UserSettings, { cascade: true, eager: true })
     @JoinColumn()
     settings: UserSettings
 
-    @ManyToMany(type => TrackedAccount, trackedAccount => trackedAccount.followedBy)
+    @ManyToMany(() => TrackedAccount, trackedAccount => trackedAccount.followedBy)
     follows: TrackedAccount[];
 
-    @OneToMany(type => Notification, notification => notification.user)
+    @OneToMany(() => Notification, notification => notification.user)
     notifications: Notification[];
 
     /**
      * Matches the user has played in
      */
-    @ManyToMany(type => Match)
+    @ManyToMany(() => Match)
     playedInMatch: Match[];
 
 }
