@@ -2,11 +2,8 @@
   "name": "@bantr/lib",
   "version": "1.0.3",
   "description": "Shared types, functions, ... for Bantr",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*"
-  ],
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "test": "npm run db:migrate",
@@ -15,7 +12,8 @@
     "db:migrate": "npm run typeorm migration:run",
     "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations",
     "preversion": "npm run lint",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm run build && cp package.json dist && cd dist && npm pack"
   },
   "author": "Catalysm",
   "license": "GPL-3.0",
