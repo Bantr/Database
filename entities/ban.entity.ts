@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm';
 import { TrackedAccount } from './trackedAccount.entity';
-import { BanType } from '../types/BanType.enum';
+import { IBanType } from '../types/BanType.enum';
 
 /**
  * Database representation of a ban
@@ -31,9 +31,9 @@ export class Ban extends BaseEntity {
      */
     @Column({
         type: "enum",
-        enum: Object.values(BanType),
+        enum: Object.values(IBanType)
     })
-    type: BanType;
+    type: IBanType;
 
     @Column({ default: false })
     unbanned: boolean;

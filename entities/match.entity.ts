@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, BaseEntity, Unique } from 'typeorm';
 import { TrackedAccount } from './trackedAccount.entity';
-import { MatchType } from '../types/matchType.interface';
+import { IMatchType } from '../types/matchType.interface';
 
 /**
  * Match database record
@@ -24,7 +24,7 @@ export class Match extends BaseEntity {
      * Faceit CSGO, Matchmaking, ...
      */
     @Column()
-    type: MatchType;
+    type: IMatchType;
 
     /**
      * ID of the match, gotten from the external service it was played on

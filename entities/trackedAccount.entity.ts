@@ -28,7 +28,7 @@ export class TrackedAccount extends BaseEntity {
      * When did we last check if this user has bans registered on external services
      */
     @Column({
-        default: new Date(0),
+        default: new Date(0)
     })
     lastCheckedAt: Date;
 

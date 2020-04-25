@@ -1,4 +1,4 @@
-export enum BanType {
+export enum IBanType {
     Game = "Game",
     VAC = "VAC",
     Economy = "Economy",

@@ -1,2 +1,2 @@
-export { BanType } from './BanType.enum'
-export { MatchType } from './matchType.interface'
+export { IBanType } from './BanType.enum'
+export { IMatchType } from './matchType.interface'

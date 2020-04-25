@@ -10,6 +10,17 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
     ],
     rules: {
-        "@typescript-eslint/no-unused-vars": "error"
+        "@typescript-eslint/no-unused-vars": "error",
+        '@typescript-eslint/interface-name-prefix': [2, { 'prefixWithI': 'always' }],
+        'comma-dangle': [
+            2,
+            {
+                arrays: 'never',
+                objects: 'never',
+                imports: 'never',
+                exports: 'never',
+                functions: 'never'
+            }
+        ],
     }
 };
