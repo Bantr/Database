@@ -1,6 +1,6 @@
 {
   "name": "@bantr/lib",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shared types, functions, ... for Bantr",
   "main": "./index.js",
   "types": "./index.d.ts",
