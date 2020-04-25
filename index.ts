@@ -1,5 +1,5 @@
-import * as entities from './src/entities'
-import * as types from './src/types'
+import * as entities from './entities'
+import * as types from './types'
 
 
 export {
