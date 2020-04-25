@@ -1,14 +1,14 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable, BaseEntity, Unique, CreateDateColumn } from 'typeorm';
-import Ban from './ban.entity';
-import User from './user.entity';
-import Match from './match.entity';
+import { Ban } from './ban.entity';
+import { User } from './user.entity';
+import { Match } from './match.entity';
 
 /**
  * Database record
  */
 @Entity()
 @Unique(['steamId'])
-export default class TrackedAccount extends BaseEntity {
+export class TrackedAccount extends BaseEntity {
     /**
      * Primary key
      */

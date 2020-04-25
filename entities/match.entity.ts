@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, BaseEntity, Unique } from 'typeorm';
-import TrackedAccount from './trackedAccount.entity';
+import { TrackedAccount } from './trackedAccount.entity';
 import { MatchType } from '../types/matchType.interface';
 
 /**
@@ -7,7 +7,7 @@ import { MatchType } from '../types/matchType.interface';
  */
 @Entity()
 @Unique(['externalId'])
-export default class Match extends BaseEntity {
+export class Match extends BaseEntity {
     /**
      * Primary key
      */

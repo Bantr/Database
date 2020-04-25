@@ -1,11 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne } from 'typeorm';
-import User from './user.entity';
+import { User } from './user.entity';
 
 /**
  * Database entity
  */
 @Entity()
-export default class UserSettings extends BaseEntity {
+export class UserSettings extends BaseEntity {
     /**
      * Primary key
      */

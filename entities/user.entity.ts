@@ -1,14 +1,14 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, OneToOne, JoinColumn, OneToMany } from 'typeorm';
-import Match from './match.entity';
-import TrackedAccount from './trackedAccount.entity';
-import UserSettings from './user-settings.entity';
-import Notification from './notification.entity';
+import { Match } from './match.entity';
+import { TrackedAccount } from './trackedAccount.entity';
+import { UserSettings } from './user-settings.entity';
+import { Notification } from './notification.entity';
 
 /**
  * Database entity
  */
 @Entity()
-export default class User extends BaseEntity {
+export class User extends BaseEntity {
     /**
      * Primary key
      */

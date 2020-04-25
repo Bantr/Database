@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm';
-import TrackedAccount from './trackedAccount.entity';
+import { TrackedAccount } from './trackedAccount.entity';
 import { BanType } from '../types/BanType.enum';
 
 /**
  * Database representation of a ban
  */
 @Entity()
-export default class Ban extends BaseEntity {
+export class Ban extends BaseEntity {
     /**
      * Primary key
      */
