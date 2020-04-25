@@ -13,7 +13,7 @@
     "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags",
-    "prepublishOnly": "npm run build && cp package.json dist && cd dist && npm pack"
+    "prepublishOnly": "cp ../package.json ."
   },
   "author": "Catalysm",
   "license": "GPL-3.0",
