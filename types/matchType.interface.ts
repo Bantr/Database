@@ -1,4 +1,4 @@
 export enum IMatchType {
-    CSGOFaceIt = 0,
+    CSGOFaceIt,
     CSGOMatchMaking,
 }
