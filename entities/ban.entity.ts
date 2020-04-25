@@ -29,7 +29,10 @@ export class Ban extends BaseEntity {
      * Type of ban
      * VAC, game, economy, faceit, ...
      */
-    @Column()
+    @Column({
+        type: "enum",
+        enum: Object.values(BanType),
+    })
     type: BanType;
 
     @Column({ default: false })

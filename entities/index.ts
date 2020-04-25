@@ -1,0 +1,6 @@
+export { Ban } from './ban.entity'
+export { Match } from './match.entity'
+export { Notification } from './notification.entity'
+export { TrackedAccount } from './trackedAccount.entity'
+export { UserSettings } from './user-settings.entity'
+export { User } from './user.entity'

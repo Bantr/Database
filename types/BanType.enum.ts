@@ -1,7 +1,7 @@
 export enum BanType {
-    Game,
-    VAC,
-    Economy,
-    Faceit,
-    Community,
+    Game = "Game",
+    VAC = "VAC",
+    Economy = "Economy",
+    Faceit = "Faceit",
+    Community = "Community",
 }

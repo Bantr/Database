@@ -1,7 +1,7 @@
 {
-  "name": "@bantr/database",
-  "version": "1.1.0",
-  "description": "Database declarations for Bantr",
+  "name": "@bantr/lib",
+  "version": "1.2.0",
+  "description": "Shared types, functions, ... for Bantr",
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
