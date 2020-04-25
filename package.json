@@ -13,7 +13,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:migrate": "npm run typeorm migration:run",
-    "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations"
+    "db:migrate:gen": "npm run typeorm migration:generate -- -d migrations",
+    "postversion": "git push && git push --tags"
   },
   "author": "Catalysm",
   "license": "GPL-3.0",
