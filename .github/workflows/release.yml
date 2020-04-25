@@ -33,7 +33,7 @@ jobs:
           PG_DB: postgres
 
   create-release:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-and-publish-npm:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -60,7 +60,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build-and-publish-gpr:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
