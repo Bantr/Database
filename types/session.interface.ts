@@ -1,4 +1,4 @@
-import ISteamProfile from './steamProfile.interface';
+import { ISteamProfile } from './steamProfile.interface';
 
 export interface ISession {
     id: string;
