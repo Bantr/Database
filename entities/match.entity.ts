@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, BaseEntity, Unique } from 'typeorm';
-import { TrackedAccount } from './trackedAccount.entity';
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
+
 import { IMatchType } from '../types/matchType.interface';
+import { Player } from './player.entity';
 
 /**
  * Match database record
@@ -37,7 +38,7 @@ export class Match extends BaseEntity {
     /**
      * TrackedAccounts that played in this Match
      */
-    @ManyToMany(() => TrackedAccount, trackedAccount => trackedAccount.matches)
+    @ManyToMany(() => Player, trackedAccount => trackedAccount.matches)
     @JoinTable()
-    players: TrackedAccount[];
+    players: Player[];
 }
