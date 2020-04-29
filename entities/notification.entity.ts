@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, CreateDateColumn, JoinTable, ManyToOne } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinTable, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 import { Ban } from './ban.entity';
 import { User } from './user.entity';
 
@@ -22,9 +23,9 @@ export class Notification extends BaseEntity {
     @Column('boolean', { default: false })
     deleted: boolean;
 
-    @ManyToMany(() => Ban)
+    @ManyToOne(() => Ban)
     @JoinTable()
-    bans: Ban[];
+    ban: Ban;
 
     @ManyToOne(() => User, user => user.notifications)
     user: User;
