@@ -36,9 +36,9 @@ export class Match extends BaseEntity {
     externalId: string;
 
     /**
-     * TrackedAccounts that played in this Match
+     * players that played in this Match
      */
-    @ManyToMany(() => Player, trackedAccount => trackedAccount.matches)
+    @ManyToMany(() => Player, player => player.matches)
     @JoinTable()
     players: Player[];
 }
