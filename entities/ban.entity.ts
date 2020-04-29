@@ -43,8 +43,8 @@ export class Ban extends BaseEntity {
     unbannedAt: Date;
 
     /**
-     * Link bans to trackedAccount
+     * Link bans to player
      */
-    @ManyToOne(() => Player, trackedAccount => trackedAccount.bans)
-    trackedAccount: Player;
+    @ManyToOne(() => Player, player => player.bans)
+    player: Player;
 }

@@ -52,14 +52,14 @@ export class User extends BaseEntity {
     /**
      * User tracks these accounts
      */
-    @ManyToMany(() => Player, trackedAccount => trackedAccount.trackedBy)
+    @ManyToMany(() => Player, player => player.trackedBy)
     tracks: Player[];
 
     @OneToOne(() => UserSettings, { cascade: true, eager: true })
     @JoinColumn()
     settings: UserSettings
 
-    @ManyToMany(() => Player, trackedAccount => trackedAccount.followedBy)
+    @ManyToMany(() => Player, player => player.followedBy)
     follows: Player[];
 
     @OneToMany(() => Notification, notification => notification.user)

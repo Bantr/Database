@@ -55,7 +55,7 @@ export class Player extends BaseEntity {
     /**
      * Bans detected for this user
      */
-    @OneToMany(() => Ban, ban => ban.trackedAccount)
+    @OneToMany(() => Ban, ban => ban.player)
     bans: Ban[];
 
     /**
