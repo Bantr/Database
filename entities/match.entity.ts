@@ -24,8 +24,14 @@ export class Match extends BaseEntity {
      * Type of Match
      * Faceit CSGO, Matchmaking, ...
      */
-    @Column()
+    @Column({ nullable: true })
     type: IMatchType;
+
+    /**
+     * URL to download the demo file
+     */
+    @Column()
+    demoUrl: string;
 
     /**
      * ID of the match, gotten from the external service it was played on
