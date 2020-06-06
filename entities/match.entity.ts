@@ -41,13 +41,13 @@ export class Match extends BaseEntity {
   @Column()
   externalId: string;
 
-  @Column()
+  @Column({ nullable: true })
   map: string;
 
-  @Column()
+  @Column({ nullable: true })
   tickrate: number;
 
-  @Column()
+  @Column({ nullable: true })
   durationTicks: number;
 
   /**
