@@ -50,19 +50,6 @@ export class User extends BaseEntity {
   role: string;
 
   /**
-   * The sharing code of the last match a user played
-   */
-  @Column("text", { nullable: true })
-  lastKnownMatch: string;
-
-  /**
-   * Authorization code to get new MM matches
-   * @see https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Access_Match_History
-   */
-  @Column("text", { nullable: true })
-  matchAuthCode: string;
-
-  /**
    * User tracks these accounts
    */
   @ManyToMany(() => Player, (player) => player.trackedBy)
