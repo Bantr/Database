@@ -4,4 +4,5 @@ export enum IMatchType {
   CSGOFaceItPremium,
   HubMapCoreEU,
   HubMapCoreNA,
+  Other,
 }
