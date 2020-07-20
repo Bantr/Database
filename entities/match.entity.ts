@@ -28,6 +28,13 @@ export class Match extends BaseEntity {
   type: IMatchType;
 
   /**
+   * More detailed info about a match type
+   * Useful for matches played in (private) Faceit hubs for example
+   */
+  @Column({ nullable: true })
+  typeExtended: string;
+
+  /**
    * URL to download the demo file
    */
   @Column()
