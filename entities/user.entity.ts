@@ -50,6 +50,22 @@ export class User extends BaseEntity {
   role: string;
 
   /**
+   * When did we last check if this user has new matches on Faceit
+   */
+  @Column({
+    default: new Date(0)
+  })
+  lastCheckedAtFaceit: Date;
+
+  /**
+   * When did we last check if this user has new matches on Steam
+   */
+  @Column({
+    default: new Date(0)
+  })
+  lastCheckedAtSteam: Date;
+
+  /**
    * User tracks these accounts
    */
   @ManyToMany(() => Player, (player) => player.trackedBy)

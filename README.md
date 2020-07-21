@@ -13,6 +13,16 @@
 
 This package is used in Bantr projects, to share types, util functions, ...
 
+## Making changes to DB schema
+
+- Change entities
+- `npm run db:migrate:gen -- -n some-descriptive-name`
+- Check migration file for correctness, adjust as needed
+- `npm run db:migrate`
+- Go into Hasura, reload metadata
+- Make changes to Hasura (Add data fields, fix relations, set permissions, ...)
+- Export metadata and save metadata.json
+
 ## Releasing a new version
 
 Use the [npm version](https://docs.npmjs.com/cli/version) command on the master branch.
