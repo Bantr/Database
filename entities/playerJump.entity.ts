@@ -1,4 +1,13 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 
 import { PlayerInfo } from './playerInfo.entity';
 import { Round } from './round.entity';
@@ -21,6 +30,7 @@ export class PlayerJump extends BaseEntity {
   tick: number;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   player: PlayerInfo;
 
   @ManyToOne(() => Round)

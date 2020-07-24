@@ -1,4 +1,13 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { UtilityType } from 'types/utilityType.enum';
 
 import { PlayerInfo } from './playerInfo.entity';
@@ -22,7 +31,10 @@ export class UtilityThrown extends BaseEntity {
   @Column()
   tick: number;
 
-  @Column()
+  @Column({
+    type: "enum",
+    enum: Object.values(UtilityType)
+  })
   type: UtilityType;
 
   /**
@@ -32,9 +44,11 @@ export class UtilityThrown extends BaseEntity {
   entityId: number;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   player: PlayerInfo;
 
   @OneToOne(() => Position)
+  @JoinColumn()
   position: Position;
 
   @ManyToOne(() => Round)

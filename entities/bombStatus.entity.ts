@@ -1,4 +1,13 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { BombStatusChange } from 'types/BombStatusChange.enum';
 
 import { PlayerInfo } from './playerInfo.entity';
@@ -22,13 +31,18 @@ export class BombStatus extends BaseEntity {
   @Column()
   tick: number;
 
-  @Column()
+  @Column({
+    type: "enum",
+    enum: Object.values(BombStatusChange)
+  })
   type: BombStatusChange;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   player: PlayerInfo;
 
   @OneToOne(() => Position)
+  @JoinColumn()
   position: Position;
 
   @ManyToOne(() => Round)

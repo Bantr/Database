@@ -1,4 +1,14 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
+import { Weapon } from 'types/Weapon.enum';
 
 import { Player } from './player.entity';
 import { Position } from './position.entity';
@@ -27,7 +37,7 @@ export class PlayerInfo extends BaseEntity {
   freezeTimeEndEquipmentValue: number;
 
   @Column()
-  cashSpentThisRound: number;
+  cashSpentInRound: number;
 
   @Column()
   hasC4: boolean;
@@ -41,14 +51,17 @@ export class PlayerInfo extends BaseEntity {
   @Column()
   isScoped: boolean;
 
-  // TODO: Should this be an enum/join table?
-  @Column()
-  weapon: string;
+  @Column({
+    type: "enum",
+    enum: Object.values(Weapon)
+  })
+  weapon: Weapon;
 
   @Column()
   bulletsInMagazine: number;
 
   @OneToOne(() => Position)
+  @JoinColumn()
   position: Position;
 
   @ManyToOne(() => Player)

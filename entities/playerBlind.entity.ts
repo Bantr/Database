@@ -1,4 +1,13 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 
 import { PlayerInfo } from './playerInfo.entity';
 import { Round } from './round.entity';
@@ -27,9 +36,11 @@ export class PlayerBlind extends BaseEntity {
   duration: number;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   attacker: PlayerInfo;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   victim: PlayerInfo;
 
   @ManyToOne(() => Round)

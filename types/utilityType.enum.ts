@@ -1,7 +1,9 @@
 export enum UtilityType {
   Smoke,
-  HEGrenade,
+  HighExplosiveGrenade,
   Decoy,
   Molotov,
   Flash,
+  Snowball,
+  TacticalAwarenessGrenade,
 }

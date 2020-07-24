@@ -1,4 +1,13 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { HurtSources } from 'types/HurtSources.enum';
 
 import { PlayerInfo } from './playerInfo.entity';
@@ -35,9 +44,11 @@ export class PlayerHurt extends BaseEntity {
   source: HurtSources;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   attacker: PlayerInfo;
 
   @OneToOne(() => PlayerInfo)
+  @JoinColumn()
   victim: PlayerInfo;
 
   @ManyToOne(() => Round)
