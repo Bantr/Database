@@ -1,7 +1,8 @@
-import { BaseEntity, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 import { IMatchType } from '../types/matchType.interface';
 import { Player } from './player.entity';
+import { Round } from './round.entity';
 
 /**
  * Match database record
@@ -63,4 +64,7 @@ export class Match extends BaseEntity {
   @ManyToMany(() => Player, (player) => player.matches)
   @JoinTable()
   players: Player[];
+
+  @OneToMany(() => Round, (round) => round.match)
+  rounds: Round[];
 }
