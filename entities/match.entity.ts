@@ -38,7 +38,7 @@ export class Match extends BaseEntity {
   /**
    * URL to download the demo file
    */
-  @Column()
+  @Column({ nullable: true })
   demoUrl: string;
 
   /**
