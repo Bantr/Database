@@ -8,8 +8,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { UtilityType } from 'types/utilityType.enum';
 
+import { UtilityType } from '../types/utilityType.enum';
 import { Position } from './position.entity';
 import { Round } from './round.entity';
 

@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RoundWinReason } from 'types/RoundWinReason.enum';
 
+import { RoundWinReason } from '../types/RoundWinReason.enum';
 import { Match } from './match.entity';
 import { Team } from './team.entity';
 
