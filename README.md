@@ -1,6 +1,6 @@
 <h1 align="center">
 <a href="https://codeclimate.com/github/Bantr/Lib/maintainability"><img src="https://api.codeclimate.com/v1/badges/e078c3c32d0005fa3fe0/maintainability" /></a>
-
+<a href="https://codeclimate.com/github/Bantr/Lib/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e078c3c32d0005fa3fe0/test_coverage" /></a>
 <a href="https://discord.bantr.app">
  <img alt="Discord" src="https://img.shields.io/discord/626436103573864448?label=Discord">
 </a>
