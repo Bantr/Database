@@ -3,6 +3,7 @@ import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGe
 import { IMatchType } from '../types/matchType.interface';
 import { Player } from './player.entity';
 import { Round } from './round.entity';
+import { Team } from './team.entity';
 
 /**
  * Match database record
@@ -67,4 +68,7 @@ export class Match extends BaseEntity {
 
   @OneToMany(() => Round, (round) => round.match)
   rounds: Round[];
+
+  @ManyToMany(() => Team, (team) => team.matches)
+  teams: Team[];
 }
