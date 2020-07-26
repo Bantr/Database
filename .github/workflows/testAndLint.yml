@@ -47,13 +47,13 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run db:migrate
-          env:
-            CI: true
-            PG_HOST: 127.0.0.1
-            PG_PORT: 5432
-            PG_USER: postgres
-            PG_PW: postgres
-            PG_DB: postgres
+        env:
+          CI: true
+          PG_HOST: 127.0.0.1
+          PG_PORT: 5432
+          PG_USER: postgres
+          PG_PW: postgres
+          PG_DB: postgres
       - run: npm run hasura:metadata:apply
       - run: npm test
         env:
