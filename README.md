@@ -13,6 +13,12 @@
 
 This package is used in Bantr projects, to share types, util functions, ...
 
+## Setting up database
+
+- Set up `.env` file (see `.env.example`)
+- `npm run db:migrate`
+- `npm run hasura:metadata:apply`
+
 ## Making changes to DB schema
 
 - Change entities
@@ -21,7 +27,7 @@ This package is used in Bantr projects, to share types, util functions, ...
 - `npm run db:migrate`
 - Go into Hasura, reload metadata
 - Make changes to Hasura (Add data fields, fix relations, set permissions, ...)
-- Export metadata and save metadata.json
+- `npm run hasura:metadata:export`
 
 ## Releasing a new version
 
