@@ -67,8 +67,10 @@ export class Match extends BaseEntity {
   players: Player[];
 
   @OneToMany(() => Round, (round) => round.match)
+  @JoinTable()
   rounds: Round[];
 
   @ManyToMany(() => Team, (team) => team.matches)
+  @JoinTable()
   teams: Team[];
 }
