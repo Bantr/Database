@@ -1,0 +1,729 @@
+- table:
+    schema: public
+    name: ban
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - detectedAt
+      - id
+      - playerId
+      - preExisting
+      - type
+      - unbanned
+      - unbannedAt
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: bomb_status
+  object_relationships:
+  - name: player_info
+    using:
+      foreign_key_constraint_on: playerId
+  - name: position
+    using:
+      foreign_key_constraint_on: positionId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - id
+      - playerId
+      - positionId
+      - roundId
+      - tick
+      - type
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: kill
+  object_relationships:
+  - name: assister
+    using:
+      foreign_key_constraint_on: assisterId
+  - name: attacker
+    using:
+      foreign_key_constraint_on: attackerId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  - name: victim
+    using:
+      foreign_key_constraint_on: victimId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - assisterId
+      - attackerId
+      - createdAt
+      - id
+      - roundId
+      - throughSmoke
+      - throughWall
+      - tick
+      - victimId
+      - whileBlind
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: match
+  array_relationships:
+  - name: players
+    using:
+      foreign_key_constraint_on:
+        column: matchId
+        table:
+          schema: public
+          name: match_players_player
+  - name: rounds
+    using:
+      foreign_key_constraint_on:
+        column: matchId
+        table:
+          schema: public
+          name: round
+  - name: team_matches_matches
+    using:
+      foreign_key_constraint_on:
+        column: matchId
+        table:
+          schema: public
+          name: team_matches_match
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - date
+      - durationTicks
+      - externalId
+      - id
+      - map
+      - tickrate
+      - type
+      - typeExtended
+      filter: {}
+      limit: 250
+      allow_aggregations: true
+- table:
+    schema: public
+    name: match_players_player
+  object_relationships:
+  - name: match
+    using:
+      foreign_key_constraint_on: matchId
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - matchId
+      - playerId
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: match_teams_team
+  object_relationships:
+  - name: match
+    using:
+      foreign_key_constraint_on: matchId
+  - name: team
+    using:
+      foreign_key_constraint_on: teamId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - matchId
+      - teamId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: notification
+  object_relationships:
+  - name: ban
+    using:
+      foreign_key_constraint_on: banId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - banId
+      - createdAt
+      - deleted
+      - id
+      - seen
+      - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      limit: 100
+      allow_aggregations: true
+- table:
+    schema: public
+    name: notification_bans_ban
+  object_relationships:
+  - name: ban
+    using:
+      foreign_key_constraint_on: banId
+  - name: notification
+    using:
+      foreign_key_constraint_on: notificationId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - banId
+      - notificationId
+      filter:
+        notification:
+          userId:
+            _eq: X-Hasura-User-Id
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player
+  array_relationships:
+  - name: bans
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: ban
+  - name: followedBy
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: player_followed_by_user
+  - name: matches
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: match_players_player
+  - name: player_infos
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: player_info
+  - name: team_players_players
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: team_players_player
+  - name: trackedBy
+    using:
+      foreign_key_constraint_on:
+        column: playerId
+        table:
+          schema: public
+          name: player_tracked_by_user
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - id
+      - lastCheckedAt
+      - steamAvatar
+      - steamId
+      - steamProfile
+      - steamUsername
+      filter: {}
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_blind
+  object_relationships:
+  - name: attacker
+    using:
+      foreign_key_constraint_on: attackerId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  - name: victim
+    using:
+      foreign_key_constraint_on: victimId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - attackerId
+      - createdAt
+      - duration
+      - id
+      - roundId
+      - tick
+      - victimId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_followed_by_user
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - playerId
+      - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_hurt
+  object_relationships:
+  - name: attacker
+    using:
+      foreign_key_constraint_on: attackerId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  - name: victim
+    using:
+      foreign_key_constraint_on: victimId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - attackerId
+      - createdAt
+      - damageArmour
+      - damageHealth
+      - hitGroup
+      - id
+      - roundId
+      - source
+      - tick
+      - victimId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_info
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - createdAt
+      - tick
+      - equipmentValue
+      - freezeTimeEndEquipmentValue
+      - cashSpentInRound
+      - hasC4
+      - health
+      - armour
+      - isScoped
+      - weapon
+      - bulletsInMagazine
+      - playerId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_jump
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - id
+      - playerId
+      - roundId
+      - tick
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: player_tracked_by_user
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - playerId
+      - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      allow_aggregations: true
+- table:
+    schema: public
+    name: position
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - createdAt
+      - x
+      - "y"
+      - z
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: round
+  object_relationships:
+  - name: match
+    using:
+      foreign_key_constraint_on: matchId
+  array_relationships:
+  - name: bomb_statuses
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: bomb_status
+  - name: kills
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: kill
+  - name: player_blinds
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: player_blind
+  - name: player_hurts
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: player_hurt
+  - name: player_jumps
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: player_jump
+  - name: teams
+    using:
+      foreign_key_constraint_on:
+        column: roundsWonId
+        table:
+          schema: public
+          name: team
+  - name: utility_activateds
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: utility_activated
+  - name: utility_throwns
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: utility_thrown
+  - name: weapon_statuses
+    using:
+      foreign_key_constraint_on:
+        column: roundId
+        table:
+          schema: public
+          name: weapon_status
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - endTick
+      - id
+      - matchId
+      - startTick
+      - winReason
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: team
+  object_relationships:
+  - name: round
+    using:
+      foreign_key_constraint_on: roundsWonId
+  array_relationships:
+  - name: matches
+    using:
+      foreign_key_constraint_on:
+        column: teamId
+        table:
+          schema: public
+          name: team_matches_match
+  - name: players
+    using:
+      foreign_key_constraint_on:
+        column: teamId
+        table:
+          schema: public
+          name: team_players_player
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - createdAt
+      - name
+      - roundsWonId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: team_matches_match
+  object_relationships:
+  - name: match
+    using:
+      foreign_key_constraint_on: matchId
+  - name: team
+    using:
+      foreign_key_constraint_on: teamId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - teamId
+      - matchId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: team_players_player
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: team
+    using:
+      foreign_key_constraint_on: teamId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - teamId
+      - playerId
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: user
+  object_relationships:
+  - name: settings
+    using:
+      foreign_key_constraint_on: settingsId
+  array_relationships:
+  - name: follows
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: player_followed_by_user
+  - name: notifications
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: notification
+  - name: tracks
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: player_tracked_by_user
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - discordId
+      - faceitId
+      - faceitName
+      - id
+      - lastCheckedAtFaceit
+      - lastCheckedAtSteam
+      - role
+      - settingsId
+      - steamId
+      - username
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: user_settings
+  object_relationships:
+  - name: user
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user
+        column_mapping:
+          id: settingsId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - lastKnownMatch
+      - matchAuthCode
+      - notificationCommunityEnabled
+      - notificationDiscordEnabled
+      - notificationEconomyEnabled
+      - notificationFaceitEnabled
+      - notificationGameEnabled
+      - notificationVACEnabled
+      filter:
+        user:
+          id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: utility_activated
+  object_relationships:
+  - name: position
+    using:
+      foreign_key_constraint_on: positionId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - entityId
+      - id
+      - positionId
+      - roundId
+      - tick
+      - type
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: utility_thrown
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: position
+    using:
+      foreign_key_constraint_on: positionId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - entityId
+      - id
+      - playerId
+      - positionId
+      - roundId
+      - tick
+      - type
+      filter: {}
+      limit: 200
+      allow_aggregations: true
+- table:
+    schema: public
+    name: weapon_status
+  object_relationships:
+  - name: player
+    using:
+      foreign_key_constraint_on: playerId
+  - name: round
+    using:
+      foreign_key_constraint_on: roundId
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - id
+      - playerId
+      - roundId
+      - tick
+      - type
+      - weapon
+      filter: {}
+      limit: 200
+      allow_aggregations: true

@@ -17,6 +17,13 @@ jobs:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      hasura:
+        image: hasura/graphql-engine:v1.1.1
+        ports:
+          - "127.0.0.1:5001:8080"
+        env:
+          HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+          HASURA_GRAPHQL_ENABLE_CONSOLE: "false"
 
     strategy:
       matrix:
@@ -39,6 +46,15 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - run: npm run db:migrate
+        env:
+          CI: true
+          PG_HOST: 127.0.0.1
+          PG_PORT: 5432
+          PG_USER: postgres
+          PG_PW: postgres
+          PG_DB: postgres
+      - run: npm run hasura:metadata:apply
       - run: npm test
         env:
           CI: true
@@ -47,3 +63,15 @@ jobs:
           PG_USER: postgres
           PG_PW: postgres
           PG_DB: postgres
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          CI: true
+          PG_HOST: 127.0.0.1
+          PG_PORT: 5432
+          PG_USER: postgres
+          PG_PW: postgres
+          PG_DB: postgres
+        with:
+          coverageCommand: npm run test:coverage
