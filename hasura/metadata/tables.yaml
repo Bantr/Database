@@ -514,14 +514,14 @@
     using:
       foreign_key_constraint_on: roundsWonId
   array_relationships:
-  - name: team_matches_matches
+  - name: matches
     using:
       foreign_key_constraint_on:
         column: teamId
         table:
           schema: public
           name: team_matches_match
-  - name: team_players_players
+  - name: players
     using:
       foreign_key_constraint_on:
         column: teamId
