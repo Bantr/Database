@@ -8,8 +8,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { BombStatusChange } from 'types/BombStatusChange.enum';
 
+import { BombStatusChange } from '../types/BombStatusChange.enum';
 import { PlayerInfo } from './playerInfo.entity';
 import { Position } from './position.entity';
 import { Round } from './round.entity';

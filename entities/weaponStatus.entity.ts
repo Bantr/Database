@@ -8,9 +8,9 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { Weapon } from 'types/Weapon.enum';
-import { WeaponStatusChange } from 'types/WeaponStatusChange.enum';
 
+import { Weapon } from '../types/Weapon.enum';
+import { WeaponStatusChange } from '../types/WeaponStatusChange.enum';
 import { PlayerInfo } from './playerInfo.entity';
 import { Round } from './round.entity';
 

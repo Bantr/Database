@@ -8,8 +8,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { Weapon } from 'types/Weapon.enum';
 
+import { Weapon } from '../types/Weapon.enum';
 import { Player } from './player.entity';
 import { Position } from './position.entity';
 

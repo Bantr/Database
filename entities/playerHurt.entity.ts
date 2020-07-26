@@ -8,8 +8,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { HurtSources } from 'types/HurtSources.enum';
 
+import { HurtSources } from '../types/HurtSources.enum';
 import { PlayerInfo } from './playerInfo.entity';
 import { Round } from './round.entity';
 
