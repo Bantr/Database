@@ -67,11 +67,11 @@ jobs:
         uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          coverageCommand: npm run test:coverage
           CI: true
           PG_HOST: 127.0.0.1
           PG_PORT: 5432
           PG_USER: postgres
           PG_PW: postgres
           PG_DB: postgres
+        with:
+          coverageCommand: npm run test:coverage
