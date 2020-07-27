@@ -18,8 +18,7 @@
     "postversion": "git push && git push --tags",
     "hasura": "hasura --project hasura --skip-update-check",
     "hasura:metadata:apply": "npm run hasura metadata apply --from-file",
-    "hasura:metadata:export": "npm run hasura metadata export",
-    "postinstall": "npm run build"
+    "hasura:metadata:export": "npm run hasura metadata export"
   },
   "author": "Catalysm",
   "license": "GPL-3.0",
