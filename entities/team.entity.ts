@@ -30,14 +30,14 @@ export class Team extends BaseEntity {
   @Column({ nullable: true })
   name: string;
 
-  @ManyToMany(() => Player)
+  @ManyToMany(() => Player, (player) => player.teams)
   @JoinTable()
   players: Player[];
 
-  @ManyToMany(() => Match)
+  @ManyToMany(() => Match, (match) => match.teams)
   @JoinTable()
   matches: Match[];
 
-  @ManyToOne(() => Round)
+  @ManyToOne(() => Round, (round) => round.winningTeam)
   roundsWon: Round[];
 }

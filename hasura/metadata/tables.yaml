@@ -234,7 +234,7 @@
         table:
           schema: public
           name: player_info
-  - name: team_players_players
+  - name: teams
     using:
       foreign_key_constraint_on:
         column: playerId
@@ -520,7 +520,7 @@
         column: teamId
         table:
           schema: public
-          name: team_matches_match
+          name: match_teams_team
   - name: players
     using:
       foreign_key_constraint_on:
