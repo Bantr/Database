@@ -1,2 +1,2 @@
-export const lastKnownMatch = /CSGO-\w{5}-\w{5}-\w{5}-\w{5}-\w{5}/;
-export const matchAuthCode = /\w{4}-\w{5}-\w{4}/;
+export const lastKnownMatch = /CSGO-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}$/;
+export const matchAuthCode = /[A-Za-z0-9]{4}-[A-Za-z0-9]{5}-[A-Za-z0-9]{4}$/;
