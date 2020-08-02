@@ -60,6 +60,7 @@ describe("Entities", () => {
     const roundData = new Round();
     roundData.startTick = 1;
     roundData.endTick = 1337;
+    roundData.officialEndTick = 420;
     roundData.winReason = RoundWinReason.BombDefused;
     await roundData.save();
 
