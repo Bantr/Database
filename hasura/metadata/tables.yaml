@@ -501,6 +501,7 @@
       - endTick
       - id
       - matchId
+      - officialEndTick
       - startTick
       - winReason
       filter: {}

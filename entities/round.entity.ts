@@ -33,6 +33,9 @@ export class Round extends BaseEntity {
   endTick: number;
 
   @Column()
+  officialEndTick: number;
+
+  @Column()
   winReason: RoundWinReason;
 
   @ManyToOne(() => Match, (match) => match.rounds)
