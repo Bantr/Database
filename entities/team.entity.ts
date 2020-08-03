@@ -5,7 +5,7 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
 
@@ -38,6 +38,6 @@ export class Team extends BaseEntity {
   @JoinTable()
   matches: Match[];
 
-  @ManyToOne(() => Round, (round) => round.winningTeam)
+  @OneToMany(() => Round, (round) => round.winningTeam)
   roundsWon: Round[];
 }
