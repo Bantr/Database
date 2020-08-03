@@ -429,8 +429,11 @@
   - name: match
     using:
       foreign_key_constraint_on: matchId
+  - name: winningTeam
+    using:
+      foreign_key_constraint_on: winningTeamId
   array_relationships:
-  - name: bomb_statuses
+  - name: bombStatusChanges
     using:
       foreign_key_constraint_on:
         column: roundId
@@ -444,49 +447,42 @@
         table:
           schema: public
           name: kill
-  - name: player_blinds
-    using:
-      foreign_key_constraint_on:
-        column: roundId
-        table:
-          schema: public
-          name: player_blind
-  - name: player_hurts
+  - name: playerHurts
     using:
       foreign_key_constraint_on:
         column: roundId
         table:
           schema: public
           name: player_hurt
-  - name: player_jumps
+  - name: playerJumps
     using:
       foreign_key_constraint_on:
         column: roundId
         table:
           schema: public
           name: player_jump
-  - name: teams
+  - name: playersBlinded
     using:
       foreign_key_constraint_on:
-        column: roundsWonId
+        column: roundId
         table:
           schema: public
-          name: team
-  - name: utility_activateds
+          name: player_blind
+  - name: utilityActivated
     using:
       foreign_key_constraint_on:
         column: roundId
         table:
           schema: public
           name: utility_activated
-  - name: utility_throwns
+  - name: utilityThrown
     using:
       foreign_key_constraint_on:
         column: roundId
         table:
           schema: public
           name: utility_thrown
-  - name: weapon_statuses
+  - name: weaponStatusChanges
     using:
       foreign_key_constraint_on:
         column: roundId
@@ -510,10 +506,6 @@
 - table:
     schema: public
     name: team
-  object_relationships:
-  - name: round
-    using:
-      foreign_key_constraint_on: roundsWonId
   array_relationships:
   - name: matches
     using:
@@ -529,17 +521,13 @@
         table:
           schema: public
           name: team_players_player
-  select_permissions:
-  - role: user
-    permission:
-      columns:
-      - id
-      - createdAt
-      - name
-      - roundsWonId
-      filter: {}
-      limit: 200
-      allow_aggregations: true
+  - name: roundsWon
+    using:
+      foreign_key_constraint_on:
+        column: winningTeamId
+        table:
+          schema: public
+          name: round
 - table:
     schema: public
     name: team_matches_match

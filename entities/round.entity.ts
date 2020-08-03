@@ -41,7 +41,7 @@ export class Round extends BaseEntity {
   @ManyToOne(() => Match, (match) => match.rounds)
   match: Match;
 
-  @OneToMany(() => Team, (team) => team.roundsWon)
+  @ManyToOne(() => Team, (team) => team.roundsWon)
   winningTeam: Team;
 
   @OneToMany(() => BombStatus, (bombStatus) => bombStatus.round)
