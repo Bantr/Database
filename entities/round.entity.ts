@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { RoundWinReason } from '../types/RoundWinReason.enum';
+import { RoundEndReason } from '../types/RoundWinReason.enum';
 import { BombStatus } from './bombStatus.entity';
 import { Kill } from './kill.entity';
 import { Match } from './match.entity';
@@ -35,8 +35,11 @@ export class Round extends BaseEntity {
   @Column()
   officialEndTick: number;
 
-  @Column()
-  winReason: RoundWinReason;
+  @Column({
+    type: "enum",
+    enum: Object.values(RoundEndReason)
+  })
+  endReason: RoundEndReason;
 
   @ManyToOne(() => Match, (match) => match.rounds)
   match: Match;

@@ -3,7 +3,7 @@ import * as faker from 'faker';
 import { Connection, createConnection } from 'typeorm';
 
 import { entities, Match, Team } from '../entities';
-import { RoundWinReason } from '../types/RoundWinReason.enum';
+import { RoundEndReason } from '../types/RoundWinReason.enum';
 import { Round } from './round.entity';
 
 dotenv.config();
@@ -61,7 +61,7 @@ describe("Entities", () => {
     roundData.startTick = 1;
     roundData.endTick = 1337;
     roundData.officialEndTick = 420;
-    roundData.winReason = RoundWinReason.BombDefused;
+    roundData.endReason = RoundEndReason.BombDefused;
     await roundData.save();
 
     const round = await Round.findOne({
