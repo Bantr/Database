@@ -493,13 +493,14 @@
   - role: user
     permission:
       columns:
-      - createdAt
-      - endTick
       - id
+      - createdAt
+      - startTick
+      - endTick
       - matchId
       - officialEndTick
-      - startTick
-      - winReason
+      - winningTeamId
+      - endReason
       filter: {}
       limit: 200
       allow_aggregations: true
