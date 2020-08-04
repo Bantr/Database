@@ -8,8 +8,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import { TeamType } from 'types/TeamType.enum';
 
+import { TeamType } from '../types/TeamType.enum';
 import { Match } from './match.entity';
 import { Player } from './player.entity';
 import { Round } from './round.entity';
