@@ -528,6 +528,17 @@
         table:
           schema: public
           name: round
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - createdAt
+      - id
+      - name
+      - startingSide
+      filter: {}
+      limit: 200
+      allow_aggregations: true
 - table:
     schema: public
     name: team_matches_match
