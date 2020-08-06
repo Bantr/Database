@@ -104,6 +104,20 @@
           schema: public
           name: team_matches_match
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - date
+      - durationTicks
+      - externalId
+      - id
+      - map
+      - tickrate
+      - type
+      - typeExtended
+      filter: {}
+      limit: 100
+      allow_aggregations: true
   - role: user
     permission:
       columns:
@@ -249,6 +263,13 @@
           schema: public
           name: player_tracked_by_user
   select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      filter: {}
+      limit: 100
+      allow_aggregations: true
   - role: user
     permission:
       columns:
