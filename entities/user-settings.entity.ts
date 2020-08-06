@@ -31,6 +31,9 @@ export class UserSettings extends BaseEntity {
   @Column("boolean", { default: true, nullable: false })
   notificationFaceitEnabled: boolean;
 
+  @Column("boolean", { default: false, nullable: false })
+  matchmakingAuthFailed: boolean;
+
   /**
    * The sharing code of the last match a user played
    */
