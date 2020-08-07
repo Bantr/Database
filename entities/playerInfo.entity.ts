@@ -53,7 +53,8 @@ export class PlayerInfo extends BaseEntity {
 
   @Column({
     type: "enum",
-    enum: Object.values(Weapon)
+    enum: Object.values(Weapon),
+    nullable: true
   })
   weapon: Weapon;
 
