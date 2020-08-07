@@ -61,7 +61,7 @@ export class PlayerInfo extends BaseEntity {
   @Column()
   bulletsInMagazine: number;
 
-  @OneToOne(() => Position)
+  @OneToOne(() => Position, { cascade: true })
   @JoinColumn()
   position: Position;
 

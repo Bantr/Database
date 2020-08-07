@@ -14,12 +14,12 @@ export class Position extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
-  x: number;
+  @Column({ type: "real" })
+  x: string;
 
-  @Column()
-  y: number;
+  @Column({ type: "real" })
+  y: string;
 
-  @Column()
-  z: number;
+  @Column({ type: "real" })
+  z: string;
 }
