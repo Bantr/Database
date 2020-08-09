@@ -96,13 +96,13 @@
         table:
           schema: public
           name: round
-  - name: team_matches_matches
+  - name: teams
     using:
       foreign_key_constraint_on:
         column: matchId
         table:
           schema: public
-          name: team_matches_match
+          name: match_teams_team
   select_permissions:
   - role: anonymous
     permission:
