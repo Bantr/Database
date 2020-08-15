@@ -514,14 +514,15 @@
   - role: user
     permission:
       columns:
-      - id
       - createdAt
-      - startTick
+      - endReason
       - endTick
+      - id
       - matchId
       - officialEndTick
+      - startTick
+      - type
       - winningTeamId
-      - endReason
       filter: {}
       limit: 200
       allow_aggregations: true
