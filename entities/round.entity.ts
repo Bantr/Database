@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RoundType } from 'types/RoundType.enum';
 
+import { RoundType } from '../types/RoundType.enum';
 import { RoundEndReason } from '../types/RoundWinReason.enum';
 import { BombStatus } from './bombStatus.entity';
 import { Kill } from './kill.entity';
