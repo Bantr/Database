@@ -48,26 +48,26 @@ export class Round extends BaseEntity {
   winningTeam: Team;
 
   @OneToMany(() => BombStatus, (bombStatus) => bombStatus.round)
-  bombStatusChanges: BombStatus[];
+  bombStatusChanges: BombStatus[] = [];
 
   @OneToMany(() => Kill, (_) => _.round)
-  kills: Kill[];
+  kills: Kill[] = [];
 
   @OneToMany(() => PlayerBlind, (_) => _.round)
-  playerBlinds: PlayerBlind[];
+  playerBlinds: PlayerBlind[] = [];
 
   @OneToMany(() => PlayerHurt, (_) => _.round)
-  playerHurts: PlayerHurt[];
+  playerHurts: PlayerHurt[] = [];
 
   @OneToMany(() => PlayerJump, (_) => _.round)
-  playerJumps: PlayerJump[];
+  playerJumps: PlayerJump[] = [];
 
   @OneToMany(() => UtilityActivated, (_) => _.round)
-  utilityActivateds: UtilityActivated[];
+  utilityActivateds: UtilityActivated[] = [];
 
   @OneToMany(() => UtilityThrown, (_) => _.round)
-  utilityThrowns: UtilityThrown[];
+  utilityThrowns: UtilityThrown[] = [];
 
   @OneToMany(() => WeaponStatus, (_) => _.round)
-  weaponStatuses: WeaponStatus[];
+  weaponStatuses: WeaponStatus[] = [];
 }
