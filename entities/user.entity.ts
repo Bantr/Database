@@ -49,6 +49,12 @@ export class User extends BaseEntity {
   @Column("text", { default: "user" })
   role: string;
 
+  @Column({
+    type: "timestamp with time zone",
+    default: () => "CURRENT_TIMESTAMP"
+  })
+  lastActive: Date;
+
   /**
    * When did we last check if this user has new matches on Faceit
    */

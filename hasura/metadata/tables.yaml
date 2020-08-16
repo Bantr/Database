@@ -637,6 +637,7 @@
       - faceitId
       - faceitName
       - id
+      - lastActive
       - lastCheckedAtFaceit
       - lastCheckedAtSteam
       - role
