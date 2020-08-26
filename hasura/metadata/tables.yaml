@@ -47,6 +47,52 @@
       allow_aggregations: true
 - table:
     schema: public
+    name: custom_theme
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: userId
+  insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      set:
+        userId: x-hasura-User-Id
+      columns:
+      - config
+      - id
+      - name
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - config
+      - createdAt
+      - id
+      - name
+      - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - config
+      - name
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+  delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+- table:
+    schema: public
     name: kill
   object_relationships:
   - name: assister
@@ -622,6 +668,13 @@
         table:
           schema: public
           name: notification
+  - name: themes
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: custom_theme
   - name: tracks
     using:
       foreign_key_constraint_on:
@@ -666,6 +719,20 @@
       - lastKnownMatch
       - matchAuthCode
       - matchmakingAuthFailed
+      - notificationCommunityEnabled
+      - notificationDiscordEnabled
+      - notificationEconomyEnabled
+      - notificationFaceitEnabled
+      - notificationGameEnabled
+      - notificationVACEnabled
+      filter:
+        user:
+          id:
+            _eq: X-Hasura-User-Id
+  update_permissions:
+  - role: user
+    permission:
+      columns:
       - notificationCommunityEnabled
       - notificationDiscordEnabled
       - notificationEconomyEnabled

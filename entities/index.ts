@@ -1,5 +1,6 @@
 import { Ban } from './ban.entity';
 import { BombStatus } from './bombStatus.entity';
+import { CustomTheme } from './customTheme.entity';
 import { Kill } from './kill.entity';
 import { Match } from './match.entity';
 import { Notification } from './notification.entity';
@@ -29,13 +30,13 @@ export { Team } from "./team.entity";
 export { UtilityActivated } from "./utilityActivated.entity";
 export { UtilityThrown } from "./utilityThrown.entity";
 export { WeaponStatus } from "./weaponStatus.entity";
-
 export { Ban } from "./ban.entity";
 export { Match } from "./match.entity";
 export { Notification } from "./notification.entity";
 export { Player } from "./player.entity";
 export { UserSettings } from "./user-settings.entity";
 export { User } from "./user.entity";
+export { CustomTheme } from "./customTheme.entity";
 
 export const entities = [
   Ban,
@@ -55,5 +56,6 @@ export const entities = [
   Position,
   UtilityActivated,
   UtilityThrown,
-  WeaponStatus
+  WeaponStatus,
+  CustomTheme
 ];
