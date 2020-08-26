@@ -240,6 +240,15 @@
           _eq: X-Hasura-User-Id
       limit: 100
       allow_aggregations: true
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - deleted
+      - seen
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
 - table:
     schema: public
     name: notification_bans_ban
@@ -733,6 +742,8 @@
   - role: user
     permission:
       columns:
+      - lastKnownMatch
+      - matchAuthCode
       - notificationCommunityEnabled
       - notificationDiscordEnabled
       - notificationEconomyEnabled
