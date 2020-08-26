@@ -55,4 +55,7 @@ export class UserSettings extends BaseEntity {
 
   @OneToOne(() => User, (user) => user.settings)
   userId: User;
+
+  @Column("jsonb", { nullable: true })
+  layoutSettings: Record<string, unknown>;
 }
