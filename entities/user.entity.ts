@@ -1,5 +1,6 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
+import { CustomTheme } from './customTheme.entity';
 import { Match } from './match.entity';
 import { Notification } from './notification.entity';
 import { Player } from './player.entity';
@@ -92,4 +93,7 @@ export class User extends BaseEntity {
    */
   @ManyToMany(() => Match)
   playedInMatch: Match[];
+
+  @OneToMany(() => CustomTheme, (theme) => theme.user)
+  themes: Record<string, unknown>[];
 }
