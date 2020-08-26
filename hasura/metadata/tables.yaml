@@ -726,6 +726,7 @@
     permission:
       columns:
       - lastKnownMatch
+      - layoutSettings
       - matchAuthCode
       - matchmakingAuthFailed
       - notificationCommunityEnabled
@@ -743,6 +744,7 @@
     permission:
       columns:
       - lastKnownMatch
+      - layoutSettings
       - matchAuthCode
       - notificationCommunityEnabled
       - notificationDiscordEnabled
