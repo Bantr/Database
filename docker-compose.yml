@@ -1,0 +1,48 @@
+version: "3.5"
+
+services:
+  api:
+    image: quay.io/bantr/api:latest
+    ports:
+      - 127.0.0.1:30001:3000
+    restart: unless-stopped
+    # See API repo for example file
+    env_file: .env/.env.api
+    depends_on:
+      - redis
+      - postgres
+  koyi:
+    image: quay.io/bantr/koyi:latest
+    restart: unless-stopped
+    # See API repo for example file
+    env_file: .env/.env.koyi
+    depends_on:
+      - redis
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+      - 127.0.0.1:5432:5432
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: bantr
+      POSTGRES_DB: bantr
+  redis:
+    image: redis
+    restart: unless-stopped
+  graphql-engine:
+    image: hasura/graphql-engine:v1.1.1
+    ports:
+      - "127.0.0.1:5001:8080"
+    depends_on:
+      - "postgres"
+    restart: unless-stopped
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## I'm not sure this auth hook will work properly locally
+      HASURA_GRAPHQL_AUTH_HOOK: "http://api:3000/auth/graphql"
+      HASURA_GRAPHQL_AUTH_HOOK_MODE: "POST"
+      HASURA_GRAPHQL_DATABASE_URL: "postgres://bantr:secret@postgres:5432/bantr"
+      HASURA_GRAPHQL_ADMIN_SECRET: "supersecretadminapikey"
